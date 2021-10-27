@@ -1,0 +1,29 @@
+server:
+  port: 8080
+product0:
+  url: jdbc:mysql://192.168.242.5:3306/product_0?charset=utf8mb4&useSSL=false&allowMultiQueries=true
+  username: root
+  password: admin
+  databaseName: product_0
+product1:
+  url: jdbc:mysql://192.168.242.5:3306/product_1?charset=utf8mb4&useSSL=false&allowMultiQueries=true
+  username: root
+  password: admin
+  databaseName: product_1
+
+mybatis:
+  type-aliases-package: com.yang.mysql.domain
+#  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath*:mappers/**/*Mapper.xml
+
+#pagehelper
+#pagehelper:
+#  helperDialect: mysql
+#  reasonable: true
+#  supportMethodsArguments: true
+#  params: count=countSql
+#  returnPageInfo: check
+druid:
+  login:
+    user_name: admin
+    password: admin

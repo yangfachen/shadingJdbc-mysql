@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <context id="xdclass" targetRuntime="MyBatis3">
+
+        <!-- 用反引号`包裹,默认是双引号"-->
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.242.5:3306/product_0?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="root" password="admin">
+        </jdbcConnection>
+
+        <!-- java type resolver -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+            <property name="useJSR310Types" value="true"/>
+        </javaTypeResolver>
+
+
+        <!-- gem entity -->
+        <javaModelGenerator targetPackage="com.yang.mysql.domain"
+                            targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="false"/>
+        </javaModelGenerator>
+
+        <!-- gem sql map -->
+        <sqlMapGenerator targetPackage="mappers/generated"
+                         targetProject="./src/main/resources/">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- gem mapper -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.yang.mysql.mapper.generated"
+                             targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="product" domainObjectName="Product" mapperName="ProductMapper"
+               enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"
+               enableDeleteByPrimaryKey="true" enableInsert="true"
+               enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true">
+            <columnOverride column="is_default_type" property="defaultType" javaType="java.lang.Boolean"
+                            jdbcType="TINYINT"/>
+        </table>
+
+
+    </context>
+</generatorConfiguration>
